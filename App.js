@@ -29,7 +29,6 @@ export default function App() {
         OPEN_WEATHER_MAP_BASE_URL +
         query +
         `&appid=${OPEN_WEATHER_MAP_API_KEY}`;
-      console.log(uri);
       const response = await fetch(uri);
 
       if (response.status === 404) {

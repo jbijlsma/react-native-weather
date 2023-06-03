@@ -6,16 +6,9 @@ module.exports = function (api) {
       [
         "module:react-native-dotenv",
         {
-          envName: "APP_ENV",
-          moduleName: "@env",
-          path: ".env",
-          blocklist: null,
-          allowlist: null,
-          blacklist: null, // DEPRECATED
-          whitelist: null, // DEPRECATED
-          safe: false,
-          allowUndefined: true,
-          verbose: false,
+          // If you don't use the direnv shell extension the path to the file that contains the settings (default .env)
+          path: ".env_local",
+          allowlist: ["OPEN_WEATHER_MAP_API_KEY"],
         },
       ],
     ],
