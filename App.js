@@ -113,10 +113,20 @@ export default function App() {
     );
   }
 
+  let gradientColors = ["#136a8a", "#267871"];
+
+  if (weatherData) {
+    if (weatherData.weather[0].icon.endsWith("d")) {
+      gradientColors = ["#00b4db", "#0083b0"];
+    } else {
+      gradientColors = ["#232526", "#414345"];
+    }
+  }
+
   return (
     <LinearGradient
       style={styles.gradient}
-      colors={["#136a8a", "#267871"]}
+      colors={gradientColors}
     >
       <SafeArea>
         <StatusBar style="auto" />
