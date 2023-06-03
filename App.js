@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,11 +20,18 @@ import { useState } from "react";
 export default function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [searchText, setSearchText] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const OPEN_WEATHER_MAP_BASE_URL =
     "https://api.openweathermap.org/data/2.5/weather?units=metric";
 
+  const sleep = (ms) => new Promise((cb) => setTimeout(cb, ms));
+
   const tryCallOpenWeatherApi = async (query) => {
+    setIsLoading(true);
+
+    await sleep(2000);
+
     try {
       const uri =
         OPEN_WEATHER_MAP_BASE_URL +
@@ -40,6 +48,8 @@ export default function App() {
       setWeatherData(json);
     } catch (e) {
       Alert.alert("Error", "Location not found");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -70,7 +80,7 @@ export default function App() {
   };
 
   let currentScreen = (
-    <View style={styles.startScreen}>
+    <View style={[styles.startScreen, isLoading && styles.loading]}>
       <Text style={styles.startScreenText}>React Native</Text>
       <Text style={styles.startScreenText}>Weather</Text>
       <Pressable
@@ -92,7 +102,7 @@ export default function App() {
 
   if (weatherData) {
     currentScreen = (
-      <View style={styles.weatherInfoContainer}>
+      <View style={[styles.weatherInfoContainer, isLoading && styles.loading]}>
         <Text style={styles.city}>{weatherData?.name}</Text>
         <Text style={styles.weather}>{weatherData?.weather[0]?.main}</Text>
         <View style={styles.tempartureContainer}>
@@ -161,6 +171,15 @@ export default function App() {
 
         {currentScreen}
       </SafeArea>
+
+      {isLoading && (
+        <View style={styles.spinnerContainer}>
+          <ActivityIndicator
+            animating={isLoading}
+            color="#ffffff"
+          />
+        </View>
+      )}
 
       <Image
         source={require("./assets/town.png")}
@@ -248,5 +267,17 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.5,
+  },
+  loading: {
+    opacity: 0.1,
+  },
+  spinnerContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
