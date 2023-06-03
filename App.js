@@ -141,11 +141,16 @@ export default function App() {
       <SafeArea>
         <StatusBar style="auto" />
         <View style={styles.inputContainer}>
-          <Ionicons
-            name="ios-locate-outline"
-            size={32}
-            color="white"
-          />
+          <Pressable
+            onPress={getLocation}
+            style={({ pressed }) => pressed && styles.pressed}
+          >
+            <Ionicons
+              name="ios-locate-outline"
+              size={32}
+              color="white"
+            />
+          </Pressable>
           <TextInput
             onChangeText={searchTextChangedHandler}
             onSubmitEditing={searchSubmitHandler}
