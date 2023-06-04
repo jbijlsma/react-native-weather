@@ -2,7 +2,9 @@
 
 Fully functional iOS / Android Weather App using React Native and Expo.
 
-The idea (and UI) are based on the excellent "Make Apps with Danny" series created by Danny Connel: https://www.youtube.com/watch?v=kWRpEcv2nu8&list=PLAiDzIdBfy8gNfGuDuAEBCgBLczNMAo0o&index=3
+The idea (and UI) are based on the excellent "Make Apps with Danny" series created by Danny Connell: 
+
+https://www.youtube.com/watch?v=kWRpEcv2nu8&list=PLAiDzIdBfy8gNfGuDuAEBCgBLczNMAo0o&index=3 
 
 <p float="left" align="middle">
   <img src="assets/screenshots/1.png" width="32%">
