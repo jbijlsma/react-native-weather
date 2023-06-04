@@ -1,6 +1,26 @@
-# Create a Weather App in React Native in 30 Minutes
+# React Native Apps in 30 minutes
 
-Based on: https://www.youtube.com/watch?v=kWRpEcv2nu8&list=PLAiDzIdBfy8gNfGuDuAEBCgBLczNMAo0o&index=3
+Fully functional iOS / Android Weather App using React Native and Expo.
+
+The idea (and UI) are based on the excellent "Make Apps with Danny" series created by Danny Connel: https://www.youtube.com/watch?v=kWRpEcv2nu8&list=PLAiDzIdBfy8gNfGuDuAEBCgBLczNMAo0o&index=3
+
+<p float="left" align="middle">
+  <img src="assets/screenshots/1.png" width="32%">
+  <img src="assets/screenshots/2.png" width="32%">
+  <img src="assets/screenshots/3.png" width="32%">
+</p>
+
+These App screenshots were made using Screenshots Pro (https://screenshots.pro/).
+
+Features:
+
+- Find your current location using the Expo Location API
+- Search for a location manually
+- Get weather for a location using the Open Weather Map API
+- Background color changes based on time of day at location
+- Use a .env file to store the API key
+- Show the ActivityIndicator when API calls are in progress
+- API call error handling
 
 ## Open Weather Map API key
 
